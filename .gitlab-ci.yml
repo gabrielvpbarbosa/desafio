@@ -1,0 +1,52 @@
+image: docker:stable
+
+variables:
+  APP_IMAGE: gabrielbarbosa23/teste-cicd
+  
+  
+stages:
+- teste
+- pre-build
+- build
+- deploy
+
+teste-aplicacao:
+  services:
+  - docker:dind
+  stage: teste
+  tags:
+  - gitlab-org-docker
+  script:
+  - npm test
+
+build-docker:
+  services:
+  - docker:dind
+
+  before_script:
+  - docker info
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+  stage: pre-build
+  tags:
+  - gitlab-org-docker
+  script:
+  - node
+  only:
+    - desafio
+
+deploy-project-homolog:
+  stage: deploy
+  image: 
+    name: bitnami/kubectl:latest
+    entrypoint: ['']
+  dependencies:
+  - build-docker
+  tags:
+  - gitlab-org-docker
+  script:
+    - sed -i s/image-tag/${CI_COMMIT_SHORT_SHA}/g ./k8s/manifestos/aplicacao.yaml
+    - kubectl config get-contexts
+    - kubectl config use-context gabrielsup123/nodejs:gabriel-eks
+    - kubectl apply -f ./k8s/manifestos/aplicacao.yaml
+  only:
+    - desafio

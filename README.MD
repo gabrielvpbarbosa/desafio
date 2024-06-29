@@ -16,7 +16,7 @@
 
 # Diagrama Kubernetetes na AWS 
 
-Nesse diagrama foi pensado em uma arquitetura simples, para atender a necessidade informada.
+Nesse diagrama foi pensado em uma arquitetura simples, para atender a necessidade informada. Além dos componentes da infraestrutura também é instalado o Ingress Controller Nginx para realizar o redirecionamento dos acessos para os ingress e serviços das aplicações.
 
 ## Componentes da infraestrutura para o cluster eks
 

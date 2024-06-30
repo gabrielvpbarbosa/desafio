@@ -55,6 +55,6 @@ Criado um dashboard para monitoramento do uso de cpus pelos pods, pode ser aplic
 
 ## Painel de alertas do Prometheus
 
-Nesse painel está indica os alertas disparados nas últimas 3 horas
+Nesse painel está indicando os alertas disparados nas últimas 3 horas
 
 ![painel-alertas.png](./imagens/painel-alertas.png)

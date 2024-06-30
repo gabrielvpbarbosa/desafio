@@ -27,6 +27,7 @@ Nesse diagrama foi pensado em uma arquitetura simples, para atender a necessidad
 - NAT GATEWAY: 1
 - TABELA DE ROTA PRIVADA: 1
 - TABELA DE ROTA PUBLICA: 1
+- Cluster EKS: 1
 
 
 ## Componentes da infraestrutura para o banco RDS
@@ -37,6 +38,7 @@ Nesse diagrama foi pensado em uma arquitetura simples, para atender a necessidad
 - INTERNET GATEWAY: 1
 - TABELA DE ROTA PRIVADA: 1
 - TABELA DE ROTA PUBLICA: 1
+- RDS: 1
 
 A ideia de criar vpcs distintas para o banco e para o kubernetes, é que o kuberntes tende a ser mais instável, podendo ser que esse recurso seja eliminado, ou substituido por outro, para evitar futuros problemas achei melhor segrega-las, assim os serviços poderão trabalhar independentemente. 
 
@@ -50,3 +52,9 @@ O RDS foi criado em um grupo de subredes privadas em azs diferentes. A escolha d
 Criado um dashboard para monitoramento do uso de cpus pelos pods, pode ser aplicado os filtros de namespace para facilitar o monitoramento.
 
 ![cpu-pods-2.png](./imagens/cpu-pods-2.png)
+
+## Painel de alertas do Prometheus
+
+Nesse painel está indica os alertas disparados nas últimas 3 horas
+
+![painel-alertas.png](./imagens/painel-alertas.png)

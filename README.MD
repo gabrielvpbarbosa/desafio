@@ -40,7 +40,7 @@ Nesse diagrama foi pensado em uma arquitetura simples, para atender a necessidad
 
 A ideia de criar vpcs distintas para o banco e para o kubernetes, é que o kuberntes tende a ser mais instável, podendo ser que esse recurso seja eliminado, ou substituido por outro, para evitar futuros problemas achei melhor segrega-las, assim os serviços poderão trabalhar independentemente. 
 
-O RDS foi criado em um grupo de subredes privadas em azs diferentes. A escolha de subredes privadas é para evitar ataques vindo da internet. Para que um desenvolvedor possa acessar a aplicação foi criado uma ec2 na subnet publica para funcionar como um bastion host. Para que os nodes do eks possam se comunicar com o banco foi criado um vpc-peering para conectar as vpcs e adicionado a rota na tabela de rotas.
+O RDS foi criado em um grupo de subredes privadas em azs diferentes. A escolha de subredes privadas é para evitar ataques vindo da internet. Para que um desenvolvedor possa acessar o banco de dados foi criado uma ec2 na subnet publica para funcionar como um bastion host. Para que os nodes do eks possam se comunicar com o banco foi criado um vpc-peering para conectar as vpcs e adicionado a rota na tabela de rotas.
 
 ![desafio2.drawio.png](./imagens/desafio2.drawio.png)
 
